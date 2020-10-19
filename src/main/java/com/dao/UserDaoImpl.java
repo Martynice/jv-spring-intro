@@ -32,7 +32,7 @@ public class UserDaoImpl implements UserDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            logger.error("Couldn't insert user " + user, e);
+            throw new RuntimeException("Couldn't insert user " + user, e);
         } finally {
             if (session != null) {
                 session.close();
